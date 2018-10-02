@@ -8,7 +8,7 @@
     "test": "jest test",
     "prepare": "npm run build",
     "build": "tsc",
-    "concat": "concat -f lib/**/*.js -o dist/reactk.js"
+    "concat": "concat -f lib/*.js -o dist/reactk.js"
   },
   "files": [
     "lib"
@@ -18,7 +18,7 @@
     "retention analytics"
   ],
   "author": "Rémi Demol",
-  "license": "MIT",
+  "license": "Apache v2",
   "devDependencies": {
     "babel-jest": "^23.4.2",
     "concat": "^1.0.3",
