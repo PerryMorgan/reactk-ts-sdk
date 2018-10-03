@@ -5,6 +5,6 @@ export declare class ReactK {
     private httpClient;
     constructor(clientId: string, userId?: string);
     setUserId(userId: string): void;
-    track(eventType: string, payload?: Map<string, any>): Promise<AxiosResponse>;
+    track(eventType: string, payload?: {}): Promise<AxiosResponse>;
     private getDeviceId;
 }

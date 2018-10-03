@@ -16,15 +16,15 @@ export class ReactK {
         this.clientId = clientId;
         this.userId = userId;
         this.httpClient = new ReactKHttpClient();
-        this.track("client_init");
+        this.track("reactk_client_init");
     }
 
     setUserId(userId: string) {
         this.userId = userId;
-        this.track("update_user_id");
+        this.track("reactk_update_user_id");
     }
 
-    track(eventType: string, payload?: Map<string, any>): Promise<AxiosResponse> {
+    track(eventType: string, payload?: {}): Promise<AxiosResponse> {
         let event = new ReactKEvent(this.clientId, eventType)
             .setUID(this.getDeviceId());
         if (this.userId) {

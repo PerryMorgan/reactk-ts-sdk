@@ -33,13 +33,12 @@ export class ReactKEvent {
         return this;
     }
 
-    setPayload(payload: Map<string, any>): ReactKEvent {
-        payload.forEach((value, key) => {
-            // avoid override internal property
+    setPayload(payload: {}): ReactKEvent {
+        for (let key in payload){
             if (key.substr(0, prefixKey.length) != prefixKey) {
-                this.payload[key] = value;
+                this.payload[key] = payload[key];
             }
-        });
+        }
         return this;
     }
 

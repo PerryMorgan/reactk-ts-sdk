@@ -8,6 +8,6 @@ export declare class ReactKEvent {
     constructor(clientId: string, eventType: string);
     setUID(value: string): ReactKEvent;
     setUserId(id: string): ReactKEvent;
-    setPayload(payload: Map<string, any>): ReactKEvent;
+    setPayload(payload: {}): ReactKEvent;
     setUrl(id: string): ReactKEvent;
 }

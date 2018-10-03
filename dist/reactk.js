@@ -21,12 +21,11 @@ class ReactKEvent {
         return this;
     }
     setPayload(payload) {
-        payload.forEach((value, key) => {
-            // avoid override internal property
+        for (let key in payload) {
             if (key.substr(0, prefixKey.length) != prefixKey) {
-                this.payload[key] = value;
+                this.payload[key] = payload[key];
             }
-        });
+        }
         return this;
     }
     setUrl(id) {
@@ -97,11 +96,11 @@ class ReactK {
         this.clientId = clientId;
         this.userId = userId;
         this.httpClient = new http_client_1.ReactKHttpClient();
-        this.track("client_init");
+        this.track("reactk_client_init");
     }
     setUserId(userId) {
         this.userId = userId;
-        this.track("update_user_id");
+        this.track("reactk_update_user_id");
     }
     track(eventType, payload) {
         let event = new event_1.ReactKEvent(this.clientId, eventType)
