@@ -4,9 +4,8 @@
 <body>
     <script src="../dist/reactk.min.js"></script>
     <script type="text/javascript">
-        //process = {env: {NODE_ENV: 'production'}};
-        //process.env.NODE_ENV = 'production';
-        let r = new reactk.ReactK("simple-example");
+        let r = new reactk.ReactK("simple-example", "MY_OPTIONAL_USER_ID");
+        r.setUserId("OR_DEFINE_USER_ID_HERE");
         r.track("my-test", {mykey:"myvalue"})
     </script>
 </body>
