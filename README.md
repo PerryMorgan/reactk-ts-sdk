@@ -13,6 +13,7 @@ Use the javascript code bellow and replace values insides brackets.
         reactk.setUserId("[OR_DEFINE_USER_ID_HERE]");
         // payload is a custom hashmap with values linked to the event
         reactk.track("[EVENT_NAME]", {mykey:"myvalue"});
+        window.reactk = reactk; // optional, can be useful with some javascript framework
     </script>
 ```
 
