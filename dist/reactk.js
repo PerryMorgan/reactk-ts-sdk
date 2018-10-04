@@ -129,6 +129,27 @@ class ReactK {
     }
 }
 exports.ReactK = ReactK;
+let rc;
+function init(clientId, userId) {
+    rc = new ReactK(clientId, userId);
+}
+exports.init = init;
+function setUserId(userId) {
+    if (rc === undefined) {
+        console.log("react.Init() must be called before using setUserId()");
+        return;
+    }
+    rc.setUserId(userId);
+}
+exports.setUserId = setUserId;
+function track(eventType, payload) {
+    if (rc === undefined) {
+        console.log("react.Init() must be called before using track()");
+        return;
+    }
+    rc.track(eventType, payload);
+}
+exports.track = track;
 
 },{"./event":1,"./http_client":2,"uuid/v4":34}],4:[function(require,module,exports){
 module.exports = require('./lib/axios');

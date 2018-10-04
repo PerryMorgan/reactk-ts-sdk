@@ -8,3 +8,6 @@ export declare class ReactK {
     track(eventType: string, payload?: {}): Promise<AxiosResponse>;
     private getDeviceId;
 }
+export declare function init(clientId: string, userId?: string): void;
+export declare function setUserId(userId: string): void;
+export declare function track(eventType: string, payload?: {}): void;

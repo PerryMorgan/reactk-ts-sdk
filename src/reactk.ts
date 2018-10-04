@@ -49,3 +49,25 @@ export class ReactK {
     }
 
 }
+
+let rc: ReactK;
+
+export function init(clientId: string, userId?: string) {
+    rc = new ReactK(clientId, userId);
+}
+
+export function setUserId(userId: string) {
+    if (rc === undefined) {
+        console.log("react.Init() must be called before using setUserId()");
+        return
+    }
+    rc.setUserId(userId);
+}
+
+export function track(eventType: string, payload?: {}): Promise<AxiosResponse> {
+    if (rc === undefined) {
+        console.log("react.Init() must be called before using track()");
+        return
+    }
+    return rc.track(eventType, payload);
+}

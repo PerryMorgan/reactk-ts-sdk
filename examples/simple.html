@@ -4,9 +4,9 @@
 <body>
     <script src="../dist/reactk.min.js"></script>
     <script type="text/javascript">
-        let r = new reactk.ReactK("simple-example", "MY_OPTIONAL_USER_ID");
-        r.setUserId("OR_DEFINE_USER_ID_HERE");
-        r.track("my-test", {mykey:"myvalue"})
+        reactk.init("simple-example", "MY_OPTIONAL_USER_ID");
+        reactk.setUserId("OR_DEFINE_USER_ID_HERE");
+        reactk.track("my-test", {mykey:"myvalue"});
     </script>
 </body>
 </html>

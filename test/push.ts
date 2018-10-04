@@ -1,10 +1,10 @@
-import {ReactK} from "../src/reactk";
+import {init, ReactK, setUserId, track} from "../src/reactk";
 
 describe("Push event", () => {
     it("should push event", async () => {
-        let reactk = new ReactK("js-client-test");
-        reactk.setUserId("MYUSERID");
-        let axiosResponse = await reactk.track("unit_test", {key:"value"});
+        init("js-client-test");
+        setUserId("MYUSERID");
+        let axiosResponse = await track("unit_test", {key:"value"});
         expect(axiosResponse.status).toEqual(204);
     })
 });
