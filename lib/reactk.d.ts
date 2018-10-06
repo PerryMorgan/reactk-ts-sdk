@@ -10,4 +10,4 @@ export declare class ReactK {
 }
 export declare function init(clientId: string, userId?: string): void;
 export declare function setUserId(userId: string): void;
-export declare function track(eventType: string, payload?: {}): void;
+export declare function track(eventType: string, payload?: {}): Promise<AxiosResponse>;

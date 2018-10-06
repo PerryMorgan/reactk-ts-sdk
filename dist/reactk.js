@@ -2,7 +2,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const moment = require("moment");
-const prefixKey = "x_reactk_", userIdKey = prefixKey + "user_id", urlKey = prefixKey + "url";
+const prefixKey = "x_reactk_", userIdKey = prefixKey + "user_id", urlKey = prefixKey + "url", userAgentKey = prefixKey + "user_agent", refererKey = prefixKey + "referer";
 class ReactKEvent {
     constructor(clientId, eventType) {
         this.payload = {};
@@ -12,6 +12,7 @@ class ReactKEvent {
         t.utcOffset(0); // TODO improve to change timezone
         this.created_date = t.format("YYYY-MM-DD[T]HH:mm:ss[Z]");
         this.day = t.format("YYYY-MM-DD");
+        this.setReferer().setUserAgent();
     }
     setUID(value) {
         this.uid = value;
@@ -31,6 +32,18 @@ class ReactKEvent {
     }
     setUrl(id) {
         this.payload[urlKey] = id;
+        return this;
+    }
+    setReferer() {
+        if (document && document.referrer) {
+            this.payload[refererKey] = document.referrer;
+        }
+        return this;
+    }
+    setUserAgent() {
+        if (navigator && navigator.userAgent) {
+            this.payload[userAgentKey] = navigator.userAgent;
+        }
         return this;
     }
 }
@@ -147,7 +160,7 @@ function track(eventType, payload) {
         console.log("react.Init() must be called before using track()");
         return;
     }
-    rc.track(eventType, payload);
+    return rc.track(eventType, payload);
 }
 exports.track = track;
 

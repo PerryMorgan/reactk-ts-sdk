@@ -10,4 +10,6 @@ export declare class ReactKEvent {
     setUserId(id: string): ReactKEvent;
     setPayload(payload: {}): ReactKEvent;
     setUrl(id: string): ReactKEvent;
+    setReferer(): ReactKEvent;
+    setUserAgent(): ReactKEvent;
 }
