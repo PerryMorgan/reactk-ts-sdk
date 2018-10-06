@@ -3,7 +3,9 @@ import moment = require('moment');
 const
     prefixKey = "x_reactk_",
     userIdKey = prefixKey + "user_id",
-    urlKey = prefixKey + "url";
+    urlKey = prefixKey + "url",
+    userAgentKey = prefixKey + "user_agent",
+    refererKey = prefixKey + "referer";
 
 export class ReactKEvent {
     uid?: string;
@@ -21,6 +23,7 @@ export class ReactKEvent {
         t.utcOffset(0); // TODO improve to change timezone
         this.created_date = t.format("YYYY-MM-DD[T]HH:mm:ss[Z]");
         this.day = t.format("YYYY-MM-DD");
+        this.setReferer().setUserAgent();
     }
 
     setUID(value: string): ReactKEvent {
@@ -34,7 +37,7 @@ export class ReactKEvent {
     }
 
     setPayload(payload: {}): ReactKEvent {
-        for (let key in payload){
+        for (let key in payload) {
             if (key.substr(0, prefixKey.length) != prefixKey) {
                 this.payload[key] = payload[key];
             }
@@ -44,6 +47,20 @@ export class ReactKEvent {
 
     setUrl(id: string): ReactKEvent {
         this.payload[urlKey] = id;
+        return this;
+    }
+
+    setReferer(): ReactKEvent {
+        if (document && document.referrer) {
+            this.payload[refererKey] = document.referrer;
+        }
+        return this;
+    }
+
+    setUserAgent(): ReactKEvent {
+        if (navigator && navigator.userAgent) {
+            this.payload[userAgentKey] = navigator.userAgent;
+        }
         return this;
     }
 }
