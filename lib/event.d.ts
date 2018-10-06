@@ -12,4 +12,8 @@ export declare class ReactKEvent {
     setUrl(id: string): ReactKEvent;
     setReferer(): ReactKEvent;
     setUserAgent(): ReactKEvent;
+    setLanguage(): ReactKEvent;
+    setPlatform(): ReactKEvent;
+    setProduct(): ReactKEvent;
+    setScreenSize(): ReactKEvent;
 }

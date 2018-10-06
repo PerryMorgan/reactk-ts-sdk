@@ -5,6 +5,11 @@ const
     userIdKey = prefixKey + "user_id",
     urlKey = prefixKey + "url",
     userAgentKey = prefixKey + "user_agent",
+    languageKey = prefixKey + "language",
+    platformKey = prefixKey + "platform",
+    screenWidthKey = prefixKey + "screen_width",
+    screenHeightKey = prefixKey + "screen_height",
+    navigatorProductKey = prefixKey + "navigator_product",
     refererKey = prefixKey + "referer";
 
 export class ReactKEvent {
@@ -23,7 +28,7 @@ export class ReactKEvent {
         t.utcOffset(0); // TODO improve to change timezone
         this.created_date = t.format("YYYY-MM-DD[T]HH:mm:ss[Z]");
         this.day = t.format("YYYY-MM-DD");
-        this.setReferer().setUserAgent();
+        this.setReferer().setUserAgent().setLanguage().setProduct().setPlatform().setScreenSize();
     }
 
     setUID(value: string): ReactKEvent {
@@ -60,6 +65,37 @@ export class ReactKEvent {
     setUserAgent(): ReactKEvent {
         if (navigator && navigator.userAgent) {
             this.payload[userAgentKey] = navigator.userAgent;
+        }
+        return this;
+    }
+
+    setLanguage(): ReactKEvent {
+        if (navigator && navigator.language) {
+            this.payload[languageKey] = navigator.language;
+        }
+        return this;
+    }
+
+    setPlatform(): ReactKEvent {
+        if (navigator && navigator.platform) {
+            this.payload[platformKey] = navigator.platform;
+        }
+        return this;
+    }
+
+    setProduct(): ReactKEvent {
+        if (navigator && navigator.product) {
+            this.payload[navigatorProductKey] = navigator.product;
+        }
+        return this;
+    }
+
+    setScreenSize(): ReactKEvent {
+        if (screen && screen.width) {
+            this.payload[screenWidthKey] = screen.width;
+        }
+        if (screen && screen.height) {
+            this.payload[screenHeightKey] = screen.height;
         }
         return this;
     }
